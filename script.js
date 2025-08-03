@@ -47,4 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
       addTask();
     }
   });
+
+  function loadTasks() {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      tasks = JSON.parse(storedTasks);
+      tasks.forEach(task => createTaskElement(task));
+    }
+  }
+
+  // Save current tasks array to localStorage
+  function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  // Load existing tasks on DOMContentLoaded
+  loadTasks();
 });
