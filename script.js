@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create a new "Remove" button
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
-    removeBtn.className = "remove-btn";
+    removeBtn.classList.add("remove-btn");
 
     // Set onclick to remove the task
     removeBtn.onclick = function () {
@@ -48,17 +48,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Load tasks from localStorage on page load
   function loadTasks() {
-    const storedTasks = localStorage.getItem('tasks');
+    const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) {
       tasks = JSON.parse(storedTasks);
-      tasks.forEach(task => createTaskElement(task));
+      tasks.forEach((task) => createTaskElement(task));
     }
   }
 
   // Save current tasks array to localStorage
   function saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   // Load existing tasks on DOMContentLoaded
